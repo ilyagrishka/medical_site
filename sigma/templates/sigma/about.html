@@ -1,0 +1,23 @@
+{% extends "sigma/base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href='{% static "deps/css/my_footer_css.css" %}'>
+{% endblock %}
+
+{% modal_basket %}
+{% include "includes/basket_button.html" %}
+{% endblock %}
+
+{% block content %}
+<h2 class="mt-5 pt-5"><strong>МЕДИЦИНСКАЯ ДИАГНОСТИКА</strong></h2>
+{% endblock %}
+
+{% block footer %}
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Made by ILYA GRIGORIEV 2024</p>
+    </div>
+</footer>
+{% endblock %}
