@@ -1,10 +1,10 @@
 from django.db import models
+from goods.models import Products
 
-from med_service.models import Product
 from users.models import User
 
 
-class OrderItemQueryset(models.QuerySet):
+class OrderitemQueryset(models.QuerySet):
 
     def total_price(self):
         return sum(cart.products_price() for cart in self)
@@ -20,9 +20,9 @@ class Order(models.Model):
                              default=None)
     created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания заказа")
     phone_number = models.CharField(max_length=20, verbose_name="Номер телефона")
-    payment_on_get = models.BooleanField(default=False, verbose_name="Оплата в мед.цетнре")
+    payment_on_get = models.BooleanField(default=False, verbose_name="Оплата в медюцентре")
     is_paid = models.BooleanField(default=False, verbose_name="Оплачено")
-    status = models.CharField(max_length=50, default='В обработке', verbose_name="Статус оплаты")
+    status = models.CharField(max_length=50, default='В обработке', verbose_name="Статус заказа")
 
     class Meta:
         db_table = "order"
@@ -31,12 +31,12 @@ class Order(models.Model):
         ordering = ("id",)
 
     def __str__(self):
-        return f"Заказ № {self.pk} | Клиент {self.user.first_name} {self.user.last_name}"
+        return f"Заказ № {self.pk} | Покупатель {self.user.first_name} {self.user.last_name}"
 
 
 class OrderItem(models.Model):
     order = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name="Заказ")
-    product = models.ForeignKey(to=Product, on_delete=models.SET_DEFAULT, null=True, verbose_name="Продукт",
+    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True, verbose_name="Продукт",
                                 default=None)
     name = models.CharField(max_length=150, verbose_name="Название")
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Цена")
@@ -49,7 +49,7 @@ class OrderItem(models.Model):
         verbose_name_plural = "Проданные товары"
         ordering = ("id",)
 
-    objects = OrderItemQueryset.as_manager()
+    objects = OrderitemQueryset.as_manager()
 
     def products_price(self):
         return round(self.product.sell_price() * self.quantity, 2)

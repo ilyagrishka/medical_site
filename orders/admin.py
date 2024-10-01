@@ -3,7 +3,7 @@ from django.contrib import admin
 from orders.models import Order, OrderItem
 
 
-class OrderItemTabAdmin(admin.TabularInline):
+class OrderItemTabulareAdmin(admin.TabularInline):
     model = OrderItem
     fields = "product", "name", "price", "quantity"
     search_fields = (
@@ -23,7 +23,7 @@ class OrderItemAdmin(admin.ModelAdmin):
     )
 
 
-class OrderTabAdmin(admin.TabularInline):
+class OrderTabulareAdmin(admin.TabularInline):
     model = Order
     fields = (
         "status",
@@ -61,4 +61,4 @@ class OrderAdmin(admin.ModelAdmin):
         "payment_on_get",
         "is_paid",
     )
-    inlines = (OrderItemTabAdmin,)
+    inlines = (OrderItemTabulareAdmin,)
