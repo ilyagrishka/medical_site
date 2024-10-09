@@ -26,8 +26,8 @@ class Order(models.Model):
 
     class Meta:
         db_table = "order"
-        verbose_name = "Заказ"
-        verbose_name_plural = "Заказы"
+        verbose_name = "Услуга"
+        verbose_name_plural = "Услуги"
         ordering = ("id",)
 
     def __str__(self):
@@ -36,7 +36,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name="Заказ")
-    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True, verbose_name="Продукт",
+    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True, verbose_name="услуга",
                                 default=None)
     name = models.CharField(max_length=150, verbose_name="Название")
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Цена")
@@ -45,8 +45,8 @@ class OrderItem(models.Model):
 
     class Meta:
         db_table = "order_item"
-        verbose_name = "Проданный товар"
-        verbose_name_plural = "Проданные товары"
+        verbose_name = "Забронированная услуга"
+        verbose_name_plural = "Забронированные услуги"
         ordering = ("id",)
 
     objects = OrderitemQueryset.as_manager()

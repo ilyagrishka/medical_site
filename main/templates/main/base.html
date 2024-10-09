@@ -39,13 +39,12 @@
                                 Информация
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url 'main:contact' %}">Контактная информация</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url 'main:about' %}">Про нас</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="{% url 'user:users_cart' %}">Корзина</a>
+                            <a class="nav-link  text-white" href="{% url 'user:users_cart' %}">Выбранные услуги</a>
                         </li>
                         {% if not user.is_authenticated %}
                             <li class="nav-item">
@@ -58,9 +57,10 @@
                                     Мой профиль
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item  text-white" href="carts/cart.html">Корзина</a></li>
+                                    <li><a class="dropdown-item  text-white" href="carts/cart.html">Выбранные услуги</a></li>
                                     <li><a class="dropdown-item  text-white" href="{% url 'user:profile' %}">Личный кабинет</a>
                                     </li>
+                                     <li><a class="dropdown-item  text-white" href="{% url 'user:book_appointment' %}">Запись к врачу</a></li>
                                     {% if user.is_admin or user.is_staff %}
                                         <li><a class="dropdown-item  text-white" href="{% url 'admin:index'%}">Админ панель</a></li>
                                     {% endif %}
@@ -86,9 +86,9 @@
             <div class="row mt-1 position-fixed z-3">
                 <!-- Каталог -->
                 <div class="dropdown mb-2">
-                    <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
+                    <button class="fixed-element btn btn-secondary dropdown-toggle btn-dark " type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Каталог
+                        Перечень предоставляемых медицинских услуг
                         <img class="mx-1" src="{% static 'deps/icons/grid-fill.svg' %}" alt="Catalog Icon" width="16"
                             height="16">
                     </button>
@@ -107,21 +107,19 @@
                 {% endblock  %}
                 <!-- Закончилась разметка модального окна -->
             </div>
+
         </div>
         <!-- Контент -->
         <div class="container">
-            <div class="row mt-1">
-                <div class="col-lg-2">
-                    <!-- Пустой блок на Ваше усмотрение -->
-                </div>
-                <div class="col-lg-10">
+
+
                     <!-- Контент на странице -->
                     {% include "includes/notifications.html" %}
                     {% block content %}
+
                     {% endblock %}
-                </div>
-            </div>
         </div>
+
     </section>
 
     {% block footer %}{% endblock %}

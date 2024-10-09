@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Запись на приём</title>
 </head>
 <body>
-$END$
+    <h1>Записаться на приём</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Записаться</button>
+    </form>
 </body>
 </html>

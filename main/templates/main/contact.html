@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+<link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
 {% endblock %}
 
 {% block modal_cart %}
@@ -10,13 +10,69 @@
 {% endblock  %}
 
 {% block content %}
-    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
-        <div class="container p-4">
+<div class="mt-5 pt-5 bg-white custom-shadow rounded">
+    <div class="container p-4">
         <h2 class="m-2"><strong>{{ content }}</strong></h2>
         <p class="m-2">{{ text_on_page }}</p>
-        </div>
     </div>
+</div>
+ <img class="mx-1" src="{% static 'deps/images/map.png' %}" alt="map " width="400"
+     height="400">
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        .form-container {
+            max-width: 200px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 50%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+<div class="container">
+    <h1>Обратная связь</h1>
+    <form action="#" method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required pattern="\+?[0-9]{10,15}">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+
+</body>
 {% endblock %}
+
 
 {% block footer %}
 <footer class="py-4 bg-dark">

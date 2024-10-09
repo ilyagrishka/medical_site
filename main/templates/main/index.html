@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+<link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+<link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}">
 {% endblock %}
 
 {% block modal_cart %}
@@ -10,7 +11,36 @@
 {% endblock  %}
 
 {% block content %}
-    <h1 class="mt-5 pt-5"><strong>{{ content }}</strong></h1>
+<div class="row">
+    <div class="col-5">
+
+        <div class="contact-container contact_container_home">
+            <h2>Обратная связь</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Электронная почта:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-7">
+        <div class="hero-section">
+            <h1 class="company-name">{{ content }}</h1>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block footer %}

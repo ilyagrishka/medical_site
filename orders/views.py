@@ -34,8 +34,6 @@ class CreateOrderView(LoginRequiredMixin, FormView):
                     order = Order.objects.create(
                         user=user,
                         phone_number=form.cleaned_data['phone_number'],
-                        requires_delivery=form.cleaned_data['requires_delivery'],
-                        delivery_address=form.cleaned_data['delivery_address'],
                         payment_on_get=form.cleaned_data['payment_on_get'],
                     )
                     # Создать заказанные товары

@@ -15,8 +15,39 @@
         <h2 class="m-2"><strong>{{ content }}</strong></h2>
         <p class="m-2">{{ text_on_page }}</p>
         </div>
+    </div><section id="our-doctors">
+    <h2>Наши врачи</h2>
+    <div class="doctor-list">
+        <div class="doctor-card">
+            <img src="{% static 'deps/images/doctor1.png' %}" alt="Доктор Иванов" class="doctor-photo">
+            <h3>Доктор Иванов Иван Иванович</h3>
+            <p>Специальность: Терапевт</p>
+            <p>Опыт работы: 10 лет</p>
+            <p>Краткая информация: Внимательный врач с большим опытом работы в терапевтической практике.</p>
+        </div>
+
+        <div class="doctor-card">
+            <img src="{% static 'deps/images/doctor2.png' %}" alt="Доктор Петрова" class="doctor-photo">
+            <h3>Доктор Петрова Анна Сергеевна</h3>
+            <p>Специальность: Хирург</p>
+            <p>Опыт работы: 8 лет</p>
+            <p>Краткая информация: Специализируется на малоинвазивных операциях и восстановлении.</p>
+        </div>
+
+        <div class="doctor-card">
+            <img src="{% static 'deps/images/doctor3.png' %}" alt="Доктор Смирнов" class="doctor-photo">
+            <h3>Доктор Смирнов Алексей Владимирович</h3>
+            <p>Специальность: Консультант-онколог</p>
+            <p>Опыт работы: 12 лет</p>
+            <p>Краткая информация: Обладает глубокими знаниями в области ранней диагностики рака.</p>
+        </div>
+
+        <!-- Добавьте дополнительные карточки врачей по аналогии -->
     </div>
+</section>
 {% endblock %}
+
+
 
 {% block footer %}
 <footer class="py-4 bg-dark">
